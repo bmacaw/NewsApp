@@ -13,5 +13,5 @@
     <color name="textColorArticleTitle">#2B3D4D</color>
 
     <!-- Text color for the section the article in the list item is from -->
-    <color name="textColorArticleSection">#B4BAC0</color>
+    <color name="textColorArticleSectionName">#B4BAC0</color>
 </resources>
