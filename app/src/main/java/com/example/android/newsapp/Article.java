@@ -23,11 +23,12 @@ public class Article {
     private String mUrl;
 
     /**
-    * Constructs a new (@link Article) object.
-    * @param title is the title of the article.
-    * @param sectionName is the category of the article.
-    * @param url is the website URL link to read the article
-    */
+     * Constructs a new (@link Article) object.
+     *
+     * @param title       is the title of the article.
+     * @param sectionName is the category of the article.
+     * @param url         is the website URL link to read the article
+     */
     public Article(String title, String sectionName, String url) {
         mWebTitle = title;
         mSectionName = sectionName;
@@ -35,8 +36,8 @@ public class Article {
     }
 
     /**
-    * Returns the web title of the article
-    */
+     * Returns the web title of the article
+     */
     public String getWebTitle() {
         return mWebTitle;
     }

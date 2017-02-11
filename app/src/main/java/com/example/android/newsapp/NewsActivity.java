@@ -1,15 +1,15 @@
 package com.example.android.newsapp;
 
+import android.app.LoaderManager;
+import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
+import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.app.LoaderManager;
-import android.content.Loader;
-import android.app.LoaderManager.LoaderCallbacks;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -114,7 +114,6 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
-
         // Create a new loader for the given URL
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);

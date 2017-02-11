@@ -12,17 +12,21 @@ import java.util.List;
 
 public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
 
-    /** Tag for log messages */
+    /**
+     * Tag for log messages
+     */
     private static final String LOG_TAG = ArticleLoader.class.getName();
 
-    /** Query URL */
+    /**
+     * Query URL
+     */
     private String mUrl;
 
     /**
      * Constructs a new {@link ArticleLoader}.
      *
-     * @param  context of the activity
-     * @param url to load data from
+     * @param context of the activity
+     * @param url     to load data from
      */
     public ArticleLoader(Context context, String url) {
         super(context);
@@ -30,7 +34,9 @@ public class ArticleLoader extends AsyncTaskLoader<List<Article>> {
     }
 
     @Override
-    protected void onStartLoading() { forceLoad();}
+    protected void onStartLoading() {
+        forceLoad();
+    }
 
     /**
      * This is on a background thread.
