@@ -132,9 +132,9 @@ public final class QueryUtils {
      * Return a list of {@link Article} objects that has been built up from
      * parsing the given response.
      */
-    private static List<Article> extractResponseFromJson(String articleJSON) {
+    private static List<Article> extractResponseFromJson(String response) {
         // If the JSON string is empty or null, then return early.
-        if (TextUtils.isEmpty(articleJSON)) {
+        if (TextUtils.isEmpty(response)) {
             return null;
         }
 
@@ -146,14 +146,14 @@ public final class QueryUtils {
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
             // Create a JSONObject from the JSON response string
-            JSONObject baseJsonResponse = new JSONObject(articleJSON);
+            JSONObject baseJsonResponse = new JSONObject(response);
 
             // Extract the JSONObject associated with the key called "response"
-            JSONObject jsonResponse = baseJsonResponse.getJSONObject("response");
+            JSONObject jsonResults = baseJsonResponse.getJSONObject("response");
 
             // Extract the JSONArray associated with the key called "results",
             // which represents a list of results(or articles).
-            JSONArray articleArray = baseJsonResponse.getJSONArray("results");
+            JSONArray articleArray = jsonResults.getJSONArray("results");
 
             // for each article in the articleArray, create an {@link Article} object
             for (int i = 0; i < articleArray.length(); i++) {
@@ -161,19 +161,14 @@ public final class QueryUtils {
                 // Get a single article at position i within the list of articles
                 JSONObject currentArticle = articleArray.getJSONObject(i);
 
-                // for a given article, extract the JSONObject associated with the
-                // key called "results", which represents a list of all results
-                // for that article.
-                JSONObject oneArticle = currentArticle.getJSONObject("results");
-
                 // Extract the value for the key called "webTitle"
-                String title = oneArticle.getString("webTitle");
+                String title = currentArticle.getString("webTitle");
 
                 // Extract the value for the key called "sectionName"
-                String sectionName = oneArticle.getString("sectionName");
+                String sectionName = currentArticle.getString("sectionName");
 
                 // Extract the value for the key called "webUrl"
-                String webUrl = oneArticle.getString("webUrl");
+                String webUrl = currentArticle.getString("webUrl");
 
                 Article article = new Article(title, sectionName, webUrl);
 
